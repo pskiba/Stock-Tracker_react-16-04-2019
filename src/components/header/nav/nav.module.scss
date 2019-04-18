@@ -1,0 +1,17 @@
+.nav {
+
+  &Item {
+    display: inline-block;
+    margin-right: 40px;
+    font-size: 14px;
+
+    a {
+      text-decoration: none;
+      color: rgb(0, 153, 255);
+    }
+    a:hover {
+      color: rgb(0, 0, 0);
+    }
+
+  }
+}

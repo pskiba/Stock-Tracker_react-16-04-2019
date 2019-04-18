@@ -1,0 +1,16 @@
+.searchingTipItem {
+  padding: 6px 30px 6px 30px;
+  font-size: 13px;
+  line-height: 16px;
+
+  .companySymbol {
+    font-weight: 700;
+  }
+
+  .companyName {
+    color: rgb(153, 153, 153);
+  }
+}
+.searchingTipItem:hover {
+  background-color: rgb(0, 210, 255);
+}
