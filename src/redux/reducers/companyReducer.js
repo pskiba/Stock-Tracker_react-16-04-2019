@@ -1,14 +1,15 @@
 const initState = {
-    companies: []
+    companies: [],
+    savedCompanies: localStorage.getItem('companies-123456') ? localStorage.getItem('companies-123456').split(',.,') : []
 };
 
 function saveInStorage(companies) {
     let dataToSave = [];
     companies.forEach((item) => {
-        dataToSave.push(JSON.stringify(item.bestMatches));
+        dataToSave.push(item.symbol);
     });
-    localStorage.setItem('companies-123456', dataToSave.join(',,,'));
-    console.log('------------------------------------------------');
+    let strDataToSave = dataToSave.length ? dataToSave.join(',.,') : '';
+    localStorage.setItem('companies-123456', strDataToSave);
 }
 
 const companyReducer = (state = initState, action) => {
@@ -23,7 +24,7 @@ const companyReducer = (state = initState, action) => {
             break;
         case 'REMOVE_COMPANY':
             const companies2 = state.companies.filter((item) => {
-                return item.bestMatches['1. symbol'] !==  action.payload;
+                return item.symbol !==  action.payload;
             });
             saveInStorage(companies2);
             return {

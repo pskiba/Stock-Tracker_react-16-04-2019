@@ -44,7 +44,7 @@ class Form extends React.Component {
         };
 
         this.companyExist = (company) => {
-            return this.props.companies.filter((item) => company['1. symbol'] === item.bestMatches['1. symbol']).length;
+            return this.props.companies.filter((item) => company.symbol === item.symbol).length;
         };
 
         this.handleSubmit = (e) => {
@@ -56,13 +56,21 @@ class Form extends React.Component {
             }
         };
 
-
-
         this.chooseCompany = (company) => {
+            const newCompany = {
+                symbol: company["1. symbol"],
+                name: company["2. name"],
+                type: company["3. type"],
+                region: company["4. region"],
+                marketOpen: company["5. marketOpen"],
+                marketClose: company["6. marketClose"],
+                timezone: company["7. timezone"],
+                currency: company["8. currency"]
+            };
             this.setState({
                 ...this.state,
-                searchValue: company[Object.keys(company)[0]],
-                company: company
+                searchValue: newCompany.symbol,
+                company: newCompany
             });
         }
     }

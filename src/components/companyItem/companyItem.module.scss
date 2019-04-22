@@ -5,9 +5,8 @@
   margin-right: 50px;
 
   .companyImg {
-    width: 64px;
-    height: 64px;
-    background: rgb(242, 242, 242);
+    display: inline-block;
+
     img {
       width: 64px;
       height: 64px;
@@ -19,12 +18,51 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
+    font-size: 14px;
+    line-height: 20px;
 
-  .companyName {
-    color: rgb(51, 51, 51);
-    font-size: 20px;
-    font-weight: 700;
+    .companyValue {
+      font-weight: 700;
+    }
+
+    .companyName {
+      color: rgb(51, 51, 51);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .plusChange {
+      color: rgb(0, 204, 0);
+      padding-right: 5px;
+      &:after {
+        transform: rotate(180deg);
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 14px;
+        background-image: url(https://d2i72ju5buk5xz.cloudfront.net/gsc/NQCEC3/48/be/02/48be0299c96c400c8f85922a205dc5a8/images/companies/u23.png?token=1a2f40cf80a98090cfb42ab7d446e8c6236a2f439fee7d43e68e165d02ba7710);
+        //background-position: right center;
+        background-repeat: no-repeat;
+      }
+      &:before {
+        content: '+';
+      }
+    }
+
+    .minusChange {
+      color: rgb(255, 0, 0);
+      &:after {
+        padding-left: 5px;
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 14px;
+        background-image: url(https://d2i72ju5buk5xz.cloudfront.net/gsc/NQCEC3/48/be/02/48be0299c96c400c8f85922a205dc5a8/images/companies/u38.png?token=772a3a28c8ee28b325571cd0e71eb61f3b0f6334483ff2b50e0edad3b431abd5);
+        background-position: right center;
+        background-repeat: no-repeat;
+      }
+    }
+
   }
   .cancelBtn {
     display: none;
@@ -38,4 +76,6 @@
   &:hover .cancelBtn {
     display: block;
   }
+
+
 }

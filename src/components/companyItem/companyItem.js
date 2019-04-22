@@ -2,22 +2,26 @@ import React from 'react';
 
 import styles from './companyItem.module.scss';
 
-const CompanyItem = ({bestMatches, globalQuote, autoComplete, removeItem}) => {
+const CompanyItem = ({item, removeItem}) => {
+    const change = Number.parseFloat(item.change).toFixed(2);
+    const percent = Number.parseFloat(item.percent.replace('%', '')).toFixed(2) + '%';
+    const price = Number.parseFloat(item.price).toFixed(2);
+    const changeClass = Number(change) < 0 ? 'minusChange' : 'plusChange';
     return (
         <div className={styles.company}>
-            <div className={styles.cancelBtn} onClick={() => { removeItem(bestMatches['1. symbol'])}}>X</div>
+            <div className={styles.cancelBtn} onClick={() => { removeItem(item.symbol)}}>X</div>
             <div className={styles.companyImg}>
-                <img src={autoComplete.logo}/>
+                <img src={item.logo}/>
             </div>
             <div className={styles.companyData}>
                 <div>
-                    <span className={styles.companyName}>{bestMatches['2. name']}</span> {bestMatches['1. symbol']} {autoComplete.domain}
+                    <span className={styles.companyName}>{item.name}</span> {item.symbol} {item.domain}
                 </div>
                 <div>
-                    {bestMatches['4. region']} {bestMatches['5. marketOpen']} - {bestMatches['6. marketClose']} {bestMatches['7. timezone']}
+                    {item.region} {item.marketOpen} - {item.marketClose} {item.timezone}
                 </div>
                 <div>
-                    <span className={styles.companyValue}>{globalQuote['05. price']}</span> {bestMatches['8. currency']} {globalQuote['09. change']} ({globalQuote['10. change percent']}) Closed: {globalQuote['07. latest trading day']}
+                    <span className={styles.companyValue}>{price}</span> {item.currency} <span className={styles[changeClass]}>{change} ({percent})</span> Closed: {item.latestTrading}
                 </div>
             </div>
         </div>
